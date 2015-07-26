@@ -1,7 +1,10 @@
 (function(){
   'use strict';
   
-  angular.module('core', ['ionic'])
+  angular.module('Core', [
+    'ionic',
+    'LokiJS'
+    ])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -15,4 +18,4 @@
       }
     });
   })
-})
+})();
