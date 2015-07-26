@@ -1,30 +1,29 @@
 (function(){
 	'use strict';
-
-	angular.module('Core', [])
+	
+	angular.module('Core')
 		.service('numberService', numberService);
 
 		numberService.$inject = ['common'];
 		function numberService (common){
 
 			var service = this;
-			service.getRandomString = getRandomString;
 			service.getRandomNumberAsString = getRandomNumberAsString;
 
 			function getRandomNumberAsString(){
 				var deferred = common.$q.defer();
 
 				var randomNumber = Math.floor((Math.random() * 1000) + 1);
-				var 4digitNumberInString = randomNumber.toString();
+				var fourDigitNumberInString = randomNumber.toString();
 
-				if(4digitNumberInString){
-					deferred.resolve(4digitNumberInString);
+				if(fourDigitNumberInString){
+					deferred.resolve(fourDigitNumberInString);
 				} else {
-					deferred.reject("Error: "+4digitNumberInString);
+					deferred.reject("Error: "+fourDigitNumberInString);
 				}
 
 				return deferred.promise;
 			}
 		}
 
-})();
+}());
