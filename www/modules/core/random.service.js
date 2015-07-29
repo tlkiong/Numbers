@@ -2,10 +2,10 @@
 	'use strict';
 	
 	angular.module('Core')
-		.service('numberService', numberService);
+		.service('randomService', randomService);
 
-		numberService.$inject = ['common'];
-		function numberService (common){
+		randomService.$inject = ['common'];
+		function randomService (common){
 
 			var service = this;
 			service.getRandomNumberAsString = getRandomNumberAsString;

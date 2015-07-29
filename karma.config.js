@@ -20,7 +20,7 @@ module.exports = function(config) {
       'www/modules/core/lokijs.service.js',
       'www/modules/app.js',
       'www/modules/core/common.service.js',
-      'www/modules/core/numbers.service.js',
+      'www/modules/core/random.service.js',
       'www/modules/**/*.specs.js'
     ],
 

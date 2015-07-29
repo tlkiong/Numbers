@@ -5,19 +5,19 @@ describe("Numbers service test", function(){
 
 	}));
 
-	var numberService, timeout;
+	var randomService, timeout;
 
-	beforeEach(inject(function (_numberService_, $timeout){
+	beforeEach(inject(function (_randomService_, $timeout){
 		timeout = $timeout;
-		numberService = _numberService_;
+		randomService = _randomService_;
 	}))
 
-	it('can get an instance of numberService', function(){
-		expect(numberService).toBeDefined();
+	it('can get an instance of randomService', function(){
+		expect(randomService).toBeDefined();
 	})
 
 	it('getRandomNumberAsString returns a string with length = 4', function(done){
-		numberService.getRandomNumberAsString().then(function(rs){
+		randomService.getRandomNumberAsString().then(function(rs){
 			expect(rs.length).not.toBe(0);
 			expect(rs.length).toBe(4);
 			done();
