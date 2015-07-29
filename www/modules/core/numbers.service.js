@@ -13,7 +13,7 @@
 			function getRandomNumberAsString(){
 				var deferred = common.$q.defer();
 
-				var randomNumber = Math.floor((Math.random() * 1000) + 1);
+				var randomNumber = Math.floor((Math.random() * 10000) + 1);
 				var fourDigitNumberInString = randomNumber.toString();
 
 				if(fourDigitNumberInString){
