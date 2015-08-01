@@ -20,16 +20,16 @@
 
     <!-- your app's js -->
     <script src="modules/core/lokijs.service.js"></script>
+    <script src="modules/menu/menu.js"></script>
+    <script src="modules/menu/menu.service.js"></script>
+    <script src="modules/menu/menu.controller.js"></script>
+    <script src="modules/unlimited/unlimited.js"></script>
+    <script src="modules/unlimited/unlimited.service.js"></script>
+    <script src="modules/unlimited/unlimited.controller.js"></script>
     <script src="modules/app.js"></script>
   </head>
 
-  <body ng-app="Core">
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
+  <body>
+    <div ui-view="main"></div>
   </body>
 </html>

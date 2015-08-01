@@ -3,8 +3,15 @@
   
   angular.module('Core', [
     'ionic',
-    'LokiJS'
+    'LokiJS',
+    'Menu',
+    'Unlimited'
     ])
+
+  .config(function(, $urlRouterProvider, $compileProvider){
+      // $urlRouterProvider.otherwise('/main');
+      $urlRouterProvider.otherwise('/unlimited');
+  })
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

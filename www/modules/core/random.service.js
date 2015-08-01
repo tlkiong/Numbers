@@ -13,13 +13,20 @@
 			function getRandomNumberAsString(){
 				var deferred = common.$q.defer();
 
-				var randomNumber = Math.floor((Math.random() * 10000) + 1);
-				var fourDigitNumberInString = randomNumber.toString();
+				var fourDigitNumberObj = {
+					one: Math.floor((Math.random() * 10) + 1),
+					two: Math.floor((Math.random() * 10) + 1),
+					three: Math.floor((Math.random() * 10) + 1),
+					four: Math.floor((Math.random() * 10) + 1)
+				}
 
-				if(fourDigitNumberInString){
-					deferred.resolve(fourDigitNumberInString);
+				if(fourDigitNumberObj.one > 0 && 
+					fourDigitNumberObj.two > 0 && 
+					fourDigitNumberObj.three > 0 && 
+					fourDigitNumberObj.four > 0){
+					deferred.resolve(fourDigitNumberObj);
 				} else {
-					deferred.reject("Error: "+fourDigitNumberInString);
+					deferred.reject("Error: "+fourDigitNumberObj);
 				}
 
 				return deferred.promise;
