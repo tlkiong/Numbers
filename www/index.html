@@ -20,16 +20,19 @@
 
     <!-- your app's js -->
     <script src="modules/core/lokijs.service.js"></script>
+    <script src="modules/app.js"></script>
+    <script src="modules/core/common.service.js"></script>
+    <script src="modules/core/random.service.js"></script>
     <script src="modules/menu/menu.js"></script>
     <script src="modules/menu/menu.service.js"></script>
     <script src="modules/menu/menu.controller.js"></script>
     <script src="modules/unlimited/unlimited.js"></script>
     <script src="modules/unlimited/unlimited.service.js"></script>
     <script src="modules/unlimited/unlimited.controller.js"></script>
-    <script src="modules/app.js"></script>
+    
   </head>
 
-  <body>
-    <div ui-view="main"></div>
+  <body ng-app="Core">
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>

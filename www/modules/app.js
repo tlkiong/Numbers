@@ -8,12 +8,12 @@
     'Unlimited'
     ])
 
-  .config(function(, $urlRouterProvider, $compileProvider){
+  .config(function($urlRouterProvider){
       // $urlRouterProvider.otherwise('/main');
       $urlRouterProvider.otherwise('/unlimited');
   })
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
