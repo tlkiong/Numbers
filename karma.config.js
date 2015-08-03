@@ -21,6 +21,8 @@ module.exports = function(config) {
       'www/modules/app.js',
       'www/modules/core/common.service.js',
       'www/modules/core/random.service.js',
+      'www/modules/menu/random.service.js',
+      'www/modules/core/random.service.js',
       'www/modules/**/*.specs.js'
     ],
 
