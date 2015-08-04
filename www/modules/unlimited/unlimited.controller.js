@@ -2,14 +2,16 @@
     angular.module("Unlimited")
         .controller("unlimitedController", unlimitedController);
 
-    unlimitedController.$inject = ['randomService', '$interval'];
+    unlimitedController.$inject = ['randomService', '$interval', '$ionicPopup'];
 
-    function unlimitedController(randomService, $interval) {
+    function unlimitedController(randomService, $interval, $ionicPopup) {
         var vm = this;
         vm.compareNumber = compareNumber;
         vm.holdIncreaseNo = holdIncreaseNo;
         vm.stopIncrease = stopIncrease;
+        vm.showAnswer = showAnswer;
 
+        /* ======================================== Var ======================================== */
         vm.resultArray = [];
         vm.numberInput = {};
         var tryNumber = 0;
@@ -29,10 +31,24 @@
         var numberGenerated = {};
         var promise;
 
-        /* Services */
+        /* ======================================== Services ======================================== */
         vm.randomService = randomService;
+        vm.popUp = $ionicPopup;
 
-        /* Public Methods */
+        /* ======================================== Public Methods ======================================== */
+        function showAnswer() {
+        	var noGenerated = numberGenerated.one + "" + numberGenerated.two + numberGenerated.three + numberGenerated.four
+        	var html = "<div style='font-size: 2em; text-align:center; font-weight:bold'>"+noGenerated+"</div>"
+        	vm.popUp.alert({
+        		title: "Answer",
+        		template: html
+        	}).then(function (rs) {
+        		// TODO: Pop up closed. Go to menu?
+        	}, function (err) {
+        		// TODO: Show error dialog?
+        	});
+        }
+
         function stopIncrease() {
             $interval.cancel(promise);
         }
@@ -80,7 +96,7 @@
             angular.copy(tempArr, vm.resultArray);
         }
 
-        /* Private Methods */
+        /* ======================================== Private Methods ======================================== */
         function clearInput() {
             angular.copy(oriNumberInput, vm.numberInput);
         }
