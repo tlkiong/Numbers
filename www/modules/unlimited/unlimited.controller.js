@@ -2,13 +2,20 @@
 	angular.module("Unlimited")
 		.controller("unlimitedController", unlimitedController);
 
-	unlimitedController.$inject = ['randomService'];
-	function unlimitedController (randomService) {
+	unlimitedController.$inject = ['randomService', '$interval'];
+	function unlimitedController (randomService, $interval) {
 		var vm= this;
 		vm.compareNumber = compareNumber;
+		vm.holdIncreaseNo = holdIncreaseNo;
+		vm.stopIncrease = stopIncrease;
 
 		vm.resultArray = [];
-		vm.numberInput = {};
+		vm.numberInput = {
+			one: 0,
+			two: 0,
+			three: 0,
+			four: 0
+		};
 		var result = {
 			inputNumber: "",
 			correctNumberNPlaceCount: 0,
@@ -16,11 +23,26 @@
 		};
 		// Format of number generated will be same as vm.numberInput
 		var numberGenerated = {};
+		var promise;
 
 		/* Services */
 		vm.randomService = randomService;
 
 		/* Public Methods */
+		function stopIncrease() {
+			$interval.cancel(promise);
+		}
+
+		function holdIncreaseNo(value) {
+			promise = $interval(function () { 
+				if(vm.numberInput[value] < 9) {
+					vm.numberInput[value] += 1;
+				} else {
+					vm.numberInput[value] = 0;
+				}
+			}, 100);
+		}
+
 		function compareNumber() {
 			var inputObj = {};
 			var correctNumberNPlaceCount = 0;
@@ -66,7 +88,7 @@
 				}
 			}, function (err) {
 				throw new Error("Error getting random number: "+err);
-			})
+			});
 		}
 
 		init();

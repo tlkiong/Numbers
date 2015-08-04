@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+.chosenNumberContainer {
+	background-color: red;
+
+}
+
+.inputNumberContainer {
+	background-color: yellow;
+}
+

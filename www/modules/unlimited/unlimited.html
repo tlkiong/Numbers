@@ -1,1 +1,20 @@
-Ahahahaha
+<ion-header-bar class="bar-positive">
+	<h1 class="title">UNLIMITED</h1>
+</ion-header-bar>
+<ion-content>
+		<ion-list class="chosenNumberContainer">
+		  <ion-item ng-repeat="item in vm.resultArray">
+			  <div class="item item-icon-right">
+			  	{{item.inputNumber}}
+			  	<i class="icon ion-close-circled">{{item.correctNumberNWrongPlaceCount}}</i>
+			  	<i class="icon ion-alert-circled">{{item.correctNumberNPlaceCount}}</i>
+			  </div>
+		  </ion-item>
+		</ion-list>
+		<div class="inputNumberContainer">
+			<div on-touch="vm.holdIncreaseNo('one')" on-release="vm.stopIncrease()">{{vm.numberInput.one}}</div>
+			<div on-touch="vm.holdIncreaseNo('two')" on-release="vm.stopIncrease()">{{vm.numberInput.two}}</div>
+			<div on-touch="vm.holdIncreaseNo('three')" on-release="vm.stopIncrease()">{{vm.numberInput.three}}</div>
+			<div on-touch="vm.holdIncreaseNo('four')" on-release="vm.stopIncrease()">{{vm.numberInput.four}}</div>
+		</div>
+	</ion-content>
