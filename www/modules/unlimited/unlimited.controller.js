@@ -11,6 +11,7 @@
 
 		vm.resultArray = [];
 		vm.numberInput = {};
+		var tryNumber = 0;
 		var oriNumberInput = {
 			one: 0,
 			two: 0,
@@ -19,6 +20,7 @@
 		};
 		var result = {
 			inputNumber: "",
+			tryNo: 0,
 			correctNumberNPlaceCount: 0,
 			correctNumberNWrongPlaceCount: 0
 		};
@@ -49,7 +51,7 @@
 				correctNumberNPlaceCount = 0,
 				correctNumberNWrongPlaceCount = 0,
 				tempArr = [];
-				
+
 			angular.copy(vm.resultArray, tempArr);
 			angular.copy(vm.numberInput, inputObj);
 
@@ -69,7 +71,7 @@
 					}
 				}
 			}
-
+			result.tryNo = ++tryNumber;
 			result.inputNumber = inputObj.one + "" + inputObj.two + inputObj.three + inputObj.four;
 			result.correctNumberNPlaceCount = correctNumberNPlaceCount;
 			result.correctNumberNWrongPlaceCount = correctNumberNWrongPlaceCount;

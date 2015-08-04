@@ -1,10 +1,80 @@
 /* Empty. Add your own CSS if you like */
-.chosenNumberContainer {
-	background-color: red;
+.flexAcross {
+	display: flex;
+	flex-flow: row nowrap;
+}
 
+.flexDown {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+.chosenNumberContainer {
+	font-size: 2em;
+}
+
+.chosenNumberContainer .inputNumber {
+	margin-left: 1.5em;
+}
+
+.chosenNumberContainer .badge {
+	left: 3%;
+	right: 88.5%;
+	top: 25%;
+	font-size: 0.9em;
+	height: 1em;
+}
+
+.chosenNumberContainer .iconContainer {
+	width: 45%;
+	margin-right: 0.3em;
+	text-align: right;
+}
+
+.chosenNumberContainer .iconContainer .leftContainer {
+	width: 50%;
+}
+
+.chosenNumberContainer .iconContainer .rightContainer {
+	width: 50%;
+}
+
+
+
+.chosenNumberContainer .badge {
+	
+}
+
+.clueContainer {
+	max-height: 33.5em;
+}
+
+.btmContainer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 
 .inputNumberContainer {
-	background-color: yellow;
+	
 }
 
+.btmContainer .inputNumberContainer div {
+	width: 25%;
+	height: 1.5em;
+	font-size: 4em;
+	text-align: center;
+	padding-top: 0.5em;
+	border: 1px solid;
+}
+
+.btmContainer .button {
+	margin: 0;
+	font-size: 2em;
+	height: 2.5em;
+	text-transform: uppercase;
+}
