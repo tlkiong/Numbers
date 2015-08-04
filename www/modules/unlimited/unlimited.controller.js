@@ -10,7 +10,8 @@
 		vm.stopIncrease = stopIncrease;
 
 		vm.resultArray = [];
-		vm.numberInput = {
+		vm.numberInput = {};
+		var oriNumberInput = {
 			one: 0,
 			two: 0,
 			three: 0,
@@ -44,13 +45,15 @@
 		}
 
 		function compareNumber() {
-			var inputObj = {};
-			var correctNumberNPlaceCount = 0;
-			var correctNumberNWrongPlaceCount = 0;
-
+			var inputObj = {},
+				correctNumberNPlaceCount = 0,
+				correctNumberNWrongPlaceCount = 0,
+				tempArr = [];
+				
+			angular.copy(vm.resultArray, tempArr);
 			angular.copy(vm.numberInput, inputObj);
 
-			clearForm();
+			clearInput();
 
 			for (var key1 in inputObj) {
 				if (inputObj.hasOwnProperty(key1)) {
@@ -58,7 +61,7 @@
 						correctNumberNPlaceCount++;
 					} else {
 						for(var key2 in numberGenerated){
-							if((numberGenerated.hasOwnProperty(key2)) && (inputObj[key1] == numberGenerated[key])){
+							if((numberGenerated.hasOwnProperty(key2)) && (inputObj[key1] == numberGenerated[key1])){
 								correctNumberNWrongPlaceCount++;
 								break;
 							}
@@ -67,16 +70,16 @@
 				}
 			}
 
-			result.inputNumber = inputObj.one + inputObj.two + inputObj.three + inputObj.four;
+			result.inputNumber = inputObj.one + "" + inputObj.two + inputObj.three + inputObj.four;
 			result.correctNumberNPlaceCount = correctNumberNPlaceCount;
 			result.correctNumberNWrongPlaceCount = correctNumberNWrongPlaceCount;
-			vm.resultArray.push(result);
+			tempArr.push(result);
+			angular.copy(tempArr, vm.resultArray);
 		}
 
 		/* Private Methods */
-		function clearForm() {
-			angular.copy({},vm.numberInput);
-			vm.inputForm.$setPristine();
+		function clearInput() {
+			angular.copy(oriNumberInput,vm.numberInput);
 		}
 
 		function init() {
@@ -89,6 +92,7 @@
 			}, function (err) {
 				throw new Error("Error getting random number: "+err);
 			});
+			angular.copy(oriNumberInput,vm.numberInput);
 		}
 
 		init();
