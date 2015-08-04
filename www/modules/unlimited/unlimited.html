@@ -1,38 +1,36 @@
 <ion-header-bar class="bar-positive">
-	<h1 class="title">unlimited mode</h1>
-	<!-- timer here -->
+    <h1 class="title">unlimited mode</h1>
+    <!-- timer here -->
 </ion-header-bar>
 <ion-content class="clueContainer">
-		<div ng-repeat="result in vm.resultArray" class="chosenNumberContainer item item-icon-right flexAcross">
-				
-			  	<span class="badge badge-assertive">{{result.tryNo}}</span>
-			  	<span class="inputNumber"> {{result.inputNumber}}</span>
-			  <div class="iconContainer icon">
-			  	<div class="leftContainer">
-			  		{{result.correctNumberNWrongPlaceCount}}
-			  		<i class="ion-close-circled"></i>
-			  	</div>
-			  	<div class="rightContainer">
-			  		{{result.correctNumberNPlaceCount}}
-			  		<i class="ion-alert-circled"></i>
-			  	</div>
-			  	
-			  </div>
-		  </div>
+    <div ng-repeat="result in vm.resultArray" class="chosenNumberContainer item item-icon-right flexAcross">
+        <span class="badge badge-assertive">{{result.tryNo}}</span>
+        <span class="inputNumber"> {{result.inputNumber}}</span>
+        <div class="iconContainer icon">
+            <div class="leftContainer">
+                {{result.correctNumberNWrongPlaceCount}}
+                <i class="ion-close-circled"></i>
+            </div>
+            <div class="rightContainer">
+                {{result.correctNumberNPlaceCount}}
+                <i class="ion-alert-circled"></i>
+            </div>
+        </div>
+    </div>
 </ion-content>
 <div class="btmContainer flexDown">
-	<div class="inputNumberContainer flexAcross">
-			<div on-touch="vm.holdIncreaseNo('one')" on-release="vm.stopIncrease()">{{vm.numberInput.one}}</div>
-			<div on-touch="vm.holdIncreaseNo('two')" on-release="vm.stopIncrease()">{{vm.numberInput.two}}</div>
-			<div on-touch="vm.holdIncreaseNo('three')" on-release="vm.stopIncrease()">{{vm.numberInput.three}}</div>
-			<div on-touch="vm.holdIncreaseNo('four')" on-release="vm.stopIncrease()">{{vm.numberInput.four}}</div>
-		</div>
-		<div class="flexAcross">
-			<button class="button button-block button-assertive" ng-click="vm.compareNumber()">
-				answer
-			</button>
-			<button class="button button-block button-balanced" ng-click="vm.compareNumber()">
-				compare
-			</button>
-		</div>
+    <div class="inputNumberContainer flexAcross">
+        <div on-touch="vm.holdIncreaseNo('one')" on-release="vm.stopIncrease()">{{vm.numberInput.one}}</div>
+        <div on-touch="vm.holdIncreaseNo('two')" on-release="vm.stopIncrease()">{{vm.numberInput.two}}</div>
+        <div on-touch="vm.holdIncreaseNo('three')" on-release="vm.stopIncrease()">{{vm.numberInput.three}}</div>
+        <div on-touch="vm.holdIncreaseNo('four')" on-release="vm.stopIncrease()">{{vm.numberInput.four}}</div>
+    </div>
+    <div class="flexAcross">
+        <button class="button button-block button-assertive" ng-click="vm.compareNumber()">
+            answer
+        </button>
+        <button class="button button-block button-balanced" ng-click="vm.compareNumber()">
+            compare
+        </button>
+    </div>
 </div>
