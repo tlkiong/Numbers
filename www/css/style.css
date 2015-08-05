@@ -16,6 +16,7 @@
 
 .chosenNumberContainer {
     font-size: 2em;
+    background-color: #FFF0DE;
 }
 
 .chosenNumberContainer .inputNumber {
@@ -40,14 +41,22 @@
     width: 50%;
 }
 
+.chosenNumberContainer .iconContainer .leftContainer .ion-alert-circled {
+    color: red;
+}
+
 .chosenNumberContainer .iconContainer .rightContainer {
     width: 50%;
+}
+
+.chosenNumberContainer .iconContainer .rightContainer .ion-checkmark-round {
 }
 
 .chosenNumberContainer .badge {}
 
 .clueContainer {
     max-height: 33.5em;
+    background-color: #FFF0DE;
 }
 
 .btmContainer {
@@ -56,7 +65,9 @@
     width: 100%;
 }
 
-.inputNumberContainer {}
+.inputNumberContainer {
+
+}
 
 .btmContainer .inputNumberContainer div {
     width: 25%;
