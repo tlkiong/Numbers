@@ -20,13 +20,14 @@
 					four: Math.floor((Math.random() * 10) + 1)
 				}
 
-				if(fourDigitNumberObj.one > 0 && 
-					fourDigitNumberObj.two > 0 && 
-					fourDigitNumberObj.three > 0 && 
-					fourDigitNumberObj.four > 0){
+				if((fourDigitNumberObj.one >= 0 && fourDigitNumberObj.one < 10) && 
+					(fourDigitNumberObj.two >= 0 && fourDigitNumberObj.two < 10) && 
+					(fourDigitNumberObj.three >= 0 && fourDigitNumberObj.three < 10) && 
+					(fourDigitNumberObj.four >= 0 && fourDigitNumberObj.four < 10)){
 					deferred.resolve(fourDigitNumberObj);
 				} else {
-					deferred.reject("Error: "+fourDigitNumberObj);
+					getRandomNumberAsString();
+					// deferred.reject("Error: "+fourDigitNumberObj);
 				}
 
 				return deferred.promise;

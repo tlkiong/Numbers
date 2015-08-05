@@ -37,16 +37,27 @@
 
         /* ======================================== Public Methods ======================================== */
         function showAnswer() {
-        	var noGenerated = numberGenerated.one + "" + numberGenerated.two + numberGenerated.three + numberGenerated.four
-        	var html = "<div style='font-size: 2em; text-align:center; font-weight:bold'>"+noGenerated+"</div>"
-        	vm.popUp.alert({
-        		title: "Answer",
-        		template: html
-        	}).then(function (rs) {
-        		// TODO: Pop up closed. Go to menu?
-        	}, function (err) {
-        		// TODO: Show error dialog?
-        	});
+        	$ionicPopup.confirm({
+				title: "Show Answer",
+				template: "<div style='font-size: 1.5em; text-align:left;'>Are you sure you want to show the answer?</div>"
+			}).then(function (rs){
+				if(rs) {
+					// Clicked yes
+					var noGenerated = numberGenerated.one + "" + numberGenerated.two + numberGenerated.three + numberGenerated.four
+		        	var html = "<div style='font-size: 2em; text-align:center; font-weight:bold'>"+noGenerated+"</div>"
+		        	vm.popUp.alert({
+		        		title: "Answer",
+		        		template: html
+		        	}).then(function (rs) {
+		        		// TODO: Pop up closed. Go to menu?
+		        		resetGame();
+		        	}, function (err) {
+		        		// TODO: Show error dialog?
+		        	});
+				} 
+			}, function (err) {
+
+			});
         }
 
         function stopIncrease() {
@@ -97,6 +108,20 @@
         }
 
         /* ======================================== Private Methods ======================================== */
+        function resetGame() {
+        	vm.randomService.getRandomNumberAsString().then(function(rs) {
+                if (rs == undefined || rs == null || rs == "") {
+                    throw new Error("rs is undefined or null: " + rs);
+                } else {
+                    angular.copy(rs, numberGenerated);
+                }
+            }, function(err) {
+                throw new Error("Error getting random number: " + err);
+            });
+            angular.copy(oriNumberInput, vm.numberInput);
+            angular.copy([], vm.resultArray);
+        }
+
         function clearInput() {
             angular.copy(oriNumberInput, vm.numberInput);
         }
