@@ -27,6 +27,12 @@
             correctNumberNPlaceCount: 0,
             correctNumberNWrongPlaceCount: 0
         };
+        var oriResultObj = {
+        	inputNumber: "",
+            tryNo: 0,
+            correctNumberNPlaceCount: 0,
+            correctNumberNWrongPlaceCount: 0
+        }
         // Format of number generated will be same as vm.numberInput
         var numberGenerated = {};
         var promise;
@@ -120,6 +126,8 @@
             });
             angular.copy(oriNumberInput, vm.numberInput);
             angular.copy([], vm.resultArray);
+            tryNumber = 0;
+            // angular.copy(oriResultObj, result)
         }
 
         function clearInput() {
