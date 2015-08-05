@@ -8,7 +8,7 @@
                     url: 'menu',
                     views: {
                         main: {
-                            templateUrl: 'modules/menu/menu.html',
+                            templateUrl: './modules/menu/menu.html',
                             controller: 'menuController',
                             controllerAs: 'vm'
                         }
