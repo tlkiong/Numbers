@@ -88,7 +88,6 @@
 
             angular.copy(vm.resultArray, tempArr);
             angular.copy(vm.numberInput, inputObj);
-
             clearInput();
 
             for (var key1 in inputObj) {
@@ -97,7 +96,7 @@
                         correctNumberNPlaceCount++;
                     } else {
                         for (var key2 in numberGenerated) {
-                            if ((numberGenerated.hasOwnProperty(key2)) && (inputObj[key1] == numberGenerated[key1])) {
+                            if ((numberGenerated.hasOwnProperty(key2)) && (inputObj[key1] == numberGenerated[key2])) {
                                 correctNumberNWrongPlaceCount++;
                                 break;
                             }
