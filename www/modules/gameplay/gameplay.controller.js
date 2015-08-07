@@ -70,6 +70,11 @@
         }
 
         function holdIncreaseNo(value) {
+            if (vm.numberInput[value] < 9) {
+                vm.numberInput[value] += 1;
+            } else {
+                vm.numberInput[value] = 0;
+            }
             promise = $interval(function() {
                 if (vm.numberInput[value] < 9) {
                     vm.numberInput[value] += 1;
