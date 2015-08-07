@@ -5,12 +5,12 @@
     'ionic',
     'LokiJS',
     'Menu',
-    'Unlimited'
+    'Gameplay'
     ])
 
   .config(function($urlRouterProvider){
       // $urlRouterProvider.otherwise('/main');
-      $urlRouterProvider.otherwise('/unlimited');
+      $urlRouterProvider.otherwise('/gameplay');
   })
 
   .run(function($ionicPlatform, $rootScope) {

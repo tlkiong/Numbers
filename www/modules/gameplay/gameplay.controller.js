@@ -1,10 +1,10 @@
 (function() {
-    angular.module("Unlimited")
-        .controller("unlimitedController", unlimitedController);
+    angular.module("Gameplay")
+        .controller("gameplayController", gameplayController);
 
-    unlimitedController.$inject = ['randomService', '$interval', '$ionicPopup'];
+    gameplayController.$inject = ['randomService', '$interval', '$ionicPopup'];
 
-    function unlimitedController(randomService, $interval, $ionicPopup) {
+    function gameplayController(randomService, $interval, $ionicPopup) {
         var vm = this;
         vm.compareNumber = compareNumber;
         vm.holdIncreaseNo = holdIncreaseNo;
