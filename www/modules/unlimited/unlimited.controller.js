@@ -55,7 +55,6 @@
 		        		title: "Answer",
 		        		template: html
 		        	}).then(function (rs) {
-		        		// TODO: Pop up closed. Go to menu?
 		        		resetGame();
 		        	}, function (err) {
 		        		// TODO: Show error dialog?
@@ -110,6 +109,19 @@
             result.correctNumberNWrongPlaceCount = correctNumberNWrongPlaceCount;
             tempArr.push(result);
             angular.copy(tempArr, vm.resultArray);
+
+            if(result.correctNumberNPlaceCount == 4 && result.correctNumberNWrongPlaceCount == 0) {
+                var html = "Congratulations! You have gotten the right answer: <br><div style='font-size: 2em; text-align:center; font-weight:bold'>"+result.inputNumber+"</div>"
+                vm.popUp.alert({
+                    title: "Congratulations!",
+                    template: html
+                }).then(function (rs) {
+                    resetGame();
+                }, function (err) {
+                    // TODO: Show error dialog?
+                });
+                resetGame();
+            }
         }
 
         /* ======================================== Private Methods ======================================== */
@@ -126,7 +138,7 @@
             angular.copy(oriNumberInput, vm.numberInput);
             angular.copy([], vm.resultArray);
             tryNumber = 0;
-            // angular.copy(oriResultObj, result)
+            // TODO: Go to menu
         }
 
         function clearInput() {
