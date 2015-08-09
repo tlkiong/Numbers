@@ -55,14 +55,18 @@
 .chosenNumberContainer .badge {}
 
 .clueContainer {
-    max-height: 33.5em;
     background-color: #FFF0DE;
 }
 
-.btmContainer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.bar-footer{
+  height:11em !important;
+  width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.has-footer {
+    bottom:11em;
 }
 
 .inputNumberContainer {

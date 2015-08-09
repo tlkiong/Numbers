@@ -4,7 +4,6 @@
 </ion-header-bar>
 <ion-content class="clueContainer">
     <div ng-repeat="result in vm.resultArray" class="chosenNumberContainer item item-icon-right flexAcross">
-        <!-- <span class="badge badge-positive">{{result.tryNo}}</span> -->
         <span class="inputNumber"> {{result.inputNumber}}</span>
         <div class="iconContainer icon">
             <div class="leftContainer">
@@ -18,7 +17,7 @@
         </div>
     </div>
 </ion-content>
-<div class="btmContainer flexDown">
+<ion-footer-bar class="flexDown">
     <div class="inputNumberContainer flexAcross">
         <div on-touch="vm.holdIncreaseNo('one')" on-release="vm.stopIncrease()">{{vm.numberInput.one}}</div>
         <div on-touch="vm.holdIncreaseNo('two')" on-release="vm.stopIncrease()">{{vm.numberInput.two}}</div>
@@ -33,4 +32,4 @@
             compare
         </button>
     </div>
-</div>
+</ion-footer-bar>
