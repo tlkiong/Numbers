@@ -183,8 +183,7 @@
             var gameplayObj = vm.service.gameplayObj;
 
             // Mocking object.
-            gameplayObj["timer"] = true;
-            gameplayObj.noOfSteps = -1;
+            gameplayObj["mode"] = "endless";
 
             if(gameplayObj == undefined || gameplayObj == null) {
                 vm.popUp.alert({
@@ -192,11 +191,15 @@
                     template: "<div style='font-weight: bold;'> Gameplay mode is not available. Please contact us for the error </div>"
                 });
             } else {
-                if(!!gameplayObj.timer && gameplayObj.noOfSteps < 0) {
-                    vm.gameProperty["timer"] = 5; // 5 minutes here
+                if(gameplayObj.mode == "timer") {
+                    vm.gameProperty["timer"] = 120; // 2 minutes here
+                    vm.gameProperty.mode = "timer";
                     countdown();
-                } else if (!gameplayObj.timer && gameplayObj.noOfSteps > 0) {
+                } else if (gameplayObj.mode == "no of steps") {
                     vm.gameProperty["noOfSteps"] = gameplayObj.noOfSteps;
+                    vm.gameProperty.mode = "no of steps";
+                } else if (gameplayObj.mode == "endless") {
+                    vm.gameProperty.mode = "endless";
                 }
             }
         }

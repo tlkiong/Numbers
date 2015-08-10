@@ -22,10 +22,12 @@
 
 				if(gameType == "timer") {
 					gameObj.timer = true;
+					gameObj.mode = "timer";
 				} else if (!isNaN(gameType)) {
 					gameObj.noOfSteps = gameType;
+					gameObj.mode = "no of steps";
 				} else if (gameType == "endless") {
-					// Do nothing for now
+					gameObj.mode = "endless";
 				} else {
 					vm.popUp.alert({
 	                    title: "ERROR",
