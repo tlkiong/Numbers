@@ -2,9 +2,9 @@
     angular.module("Gameplay")
         .controller("gameplayController", gameplayController);
 
-    gameplayController.$inject = ['randomService', '$interval', '$ionicPopup'];
+    gameplayController.$inject = ["randomService", "$interval", "$ionicPopup", "gameplayService", "$timeout"];
 
-    function gameplayController(randomService, $interval, $ionicPopup) {
+    function gameplayController(randomService, $interval, $ionicPopup, gameplayService, $timeout) {
         var vm = this;
         vm.compareNumber = compareNumber;
         vm.holdIncreaseNo = holdIncreaseNo;
@@ -12,6 +12,7 @@
         vm.showAnswer = showAnswer;
 
         /* ======================================== Var ======================================== */
+        vm.gameProperty = {};
         vm.resultArray = [];
         vm.numberInput = {};
         var tryNumber = 0;
@@ -36,8 +37,10 @@
         // Format of number generated will be same as vm.numberInput
         var numberGenerated = {};
         var promise;
+        var countDownTimer;
 
         /* ======================================== Services ======================================== */
+        vm.service = gameplayService;
         vm.randomService = randomService;
         vm.popUp = $ionicPopup;
 
@@ -130,6 +133,29 @@
         }
 
         /* ======================================== Private Methods ======================================== */
+        function countdown () {
+            if(vm.gameProperty.timer == 0) {
+                console.log("here? 2");
+                stopCountdown();
+            } else {
+                countDownTimer = $timeout(function() {
+                    vm.gameProperty.timer--;
+                    countdown();
+                }, 1000);
+            }
+        };
+
+        function stopCountdown() {
+            return new Promise(function (resolve, reject) {
+                $timeout.cancel(countDownTimer);
+                countDownTimer.then(function(rs) {
+                    resolve(rs);
+                }, function(err) {
+                    reject(err);
+                });
+            })
+        }
+
         function resetGame() {
         	vm.randomService.getRandomNumberAsString().then(function(rs) {
                 if (rs == undefined || rs == null || rs == "") {
@@ -161,6 +187,26 @@
                 throw new Error("Error getting random number: " + err);
             });
             angular.copy(oriNumberInput, vm.numberInput);
+
+            var gameplayObj = vm.service.gameplayObj;
+
+            // Mocking object.
+            gameplayObj["timer"] = true;
+            gameplayObj.noOfSteps = -1;
+
+            if(gameplayObj == undefined || gameplayObj == null) {
+                vm.popUp.alert({
+                    title: "ERROR",
+                    template: "<div style='font-weight: bold;'> Gameplay mode is not available. Please contact us for the error </div>"
+                });
+            } else {
+                if(!!gameplayObj.timer && gameplayObj.noOfSteps < 0) {
+                    vm.gameProperty["timer"] = 5; // 5 minutes here
+                    countdown();
+                } else if (!gameplayObj.timer && gameplayObj.noOfSteps > 0) {
+                    vm.gameProperty["noOfSteps"] = gameplayObj.noOfSteps;
+                }
+            }
         }
 
         init();

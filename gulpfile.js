@@ -118,6 +118,8 @@ gulp.task('inject-bower', function() {
         .pipe(gulp.dest('./www/'));
 });
 
+gulp.task('inject', ['inject-angular', 'inject-css', 'inject-bower']);
+
 gulp.task('generateIndexHtml', function() {
     // createIndexHtml stream
     var createIndexHtml = gulp.src('./www/pre-index-html/pre-index.html')
