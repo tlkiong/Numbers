@@ -137,7 +137,7 @@
             if(vm.gameProperty.timer == 0) {
                 stopCountdown();
             } else {
-                countDownTimer = $timeout(function() {
+                countDownTimer = $timeout(function () {
                     vm.gameProperty.timer--;
                     countdown();
                 }, 1000);
