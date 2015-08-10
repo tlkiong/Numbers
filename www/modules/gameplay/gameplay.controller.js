@@ -135,7 +135,6 @@
         /* ======================================== Private Methods ======================================== */
         function countdown () {
             if(vm.gameProperty.timer == 0) {
-                console.log("here? 2");
                 stopCountdown();
             } else {
                 countDownTimer = $timeout(function() {
@@ -146,14 +145,7 @@
         };
 
         function stopCountdown() {
-            return new Promise(function (resolve, reject) {
-                $timeout.cancel(countDownTimer);
-                countDownTimer.then(function(rs) {
-                    resolve(rs);
-                }, function(err) {
-                    reject(err);
-                });
-            })
+            $timeout.cancel(countDownTimer);
         }
 
         function resetGame() {
